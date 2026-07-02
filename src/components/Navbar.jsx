@@ -55,12 +55,12 @@ export default function Navbar() {
       {/* CTA Button */}
       <div>
         <a 
-          href="https://framer.com"
+          href="/resume.pdf"
           target="_blank"
           rel="noreferrer"
           className="inline-block bg-text-heading text-bg-card px-5 py-3 rounded-none font-bold text-[10px] tracking-widest uppercase hover:bg-text-heading/90 active:scale-95 transition-all cursor-pointer"
         >
-          Use For Free
+          Resume
         </a>
       </div>
     </nav>
