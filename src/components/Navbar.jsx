@@ -21,16 +21,28 @@ export default function Navbar() {
       {/* Nav Links */}
       <div className="hidden md:flex items-center gap-10">
         <button 
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} 
+          className="text-sm font-semibold text-text-main hover:text-text-heading transition-colors cursor-pointer"
+        >
+          Home
+        </button>
+        <button 
           onClick={() => scrollToSection('portfolio')} 
           className="text-sm font-semibold text-text-main hover:text-text-heading transition-colors cursor-pointer"
         >
-          Portfolio
+          Projects
         </button>
         <button 
-          onClick={() => scrollToSection('pricing')} 
+          onClick={() => scrollToSection('services')} 
           className="text-sm font-semibold text-text-main hover:text-text-heading transition-colors cursor-pointer"
         >
-          Pricing
+          Skills
+        </button>
+        <button 
+          onClick={() => scrollToSection('about')} 
+          className="text-sm font-semibold text-text-main hover:text-text-heading transition-colors cursor-pointer"
+        >
+          About Me
         </button>
         <button 
           onClick={() => scrollToSection('contact')} 
