@@ -16,49 +16,8 @@ export default function Contact() {
     }
   }
 
-  const testimonials = [
-    {
-      id: 1,
-      quote: "Working with Aditya was a game-changer for our landing page. His attention to detail in implementing Framer Motion animations made our product look extremely premium.",
-      author: "Sarah Jenkins",
-      role: "Founder, ApexLabs",
-      avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&h=120&q=80"
-    },
-    {
-      id: 2,
-      quote: "Aditya converted our Figma designs to React with absolute pixel perfection. The code is clean, responsive, and easy to maintain. Highly recommended!",
-      author: "David Chen",
-      role: "Product Lead, NeonCloud",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&h=120&q=80"
-    }
-  ]
-
   return (
     <div className="w-full flex flex-col bg-bg-card">
-      {/* Testimonials Block */}
-      <div className="grid grid-cols-1 md:grid-cols-2 border-b border-border-main bg-bg-main/5">
-        {testimonials.map((test, index) => (
-          <div 
-            key={test.id} 
-            className={`p-8 md:p-14 flex flex-col justify-between text-left gap-8 ${index === 0 ? 'border-b md:border-b-0 md:border-r border-border-main' : ''}`}
-          >
-            <p className="text-base md:text-lg italic leading-relaxed text-text-main font-medium">
-              "{test.quote}"
-            </p>
-            <div className="flex items-center gap-3.5 mt-4">
-              <img 
-                src={test.avatar} 
-                alt={test.author} 
-                className="w-11 h-11 rounded-none object-cover border border-border-main"
-              />
-              <div>
-                <h4 className="font-bold text-sm text-text-heading">{test.author}</h4>
-                <p className="text-xs text-text-main/60 font-semibold">{test.role}</p>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
 
       {/* Section Divider Block with Label: Contact */}
       <div id="contact" className="w-full border-b border-border-main flex justify-center bg-bg-main">
