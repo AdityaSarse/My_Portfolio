@@ -122,10 +122,10 @@ export default function Showcase() {
 
       </div>
 
-      {/* Section Divider Block with Label: Portfolio */}
+      {/* Section Divider Block with Label: PROJECTS */}
       <div id="portfolio" className="w-full border-t border-border-main mt-8 flex justify-center">
         <div className="border-x border-b border-border-main px-8 py-3 font-semibold text-xs tracking-widest uppercase text-text-heading bg-bg-main">
-          Portfolio
+          PROJECTS
         </div>
       </div>
     </section>

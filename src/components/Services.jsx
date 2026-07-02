@@ -408,10 +408,10 @@ export default function Services() {
         })}
       </motion.div>
 
-      {/* Section Divider Block with Label: Testimonials */}
+      {/* Section Divider Block with Label: Journey */}
       <div className="w-full border-t border-border-main flex justify-center bg-bg-main">
         <div className="border-x border-b border-border-main px-8 py-3 font-bold text-[10px] tracking-widest uppercase text-text-heading bg-bg-card translate-y-[1px]">
-          Testimonial
+          JOURNEY
         </div>
       </div>
     </section>
