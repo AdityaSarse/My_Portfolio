@@ -4,9 +4,8 @@ import Hero from './components/Hero'
 import Showcase from './components/Showcase'
 import PortfolioGrid from './components/PortfolioGrid'
 import Services from './components/Services'
+import Experience from './components/Experience'
 import About from './components/About'
-import Pricing from './components/Pricing'
-import FAQ from './components/FAQ'
 import Contact from './components/Contact'
 
 function App() {
@@ -21,9 +20,8 @@ function App() {
       <Showcase />
       <PortfolioGrid />
       <Services />
+      <Experience />
       <About />
-      <Pricing />
-      <FAQ />
       <Contact />
     </div>
   )
