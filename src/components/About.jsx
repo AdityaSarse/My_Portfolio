@@ -11,7 +11,7 @@ export default function About() {
     const box = card.getBoundingClientRect()
     const x = e.clientX - box.left - box.width / 2
     const y = e.clientY - box.top - box.height / 2
-    
+
     // Rotate max 8 degrees
     setRotateX(-y / (box.height / 2) * 8)
     setRotateY(x / (box.width / 2) * 8)
@@ -35,7 +35,7 @@ export default function About() {
       <div className="grid grid-cols-1 md:grid-cols-2">
         {/* Left Column: Image with tilt and floating animations */}
         <div className="border-b md:border-b-0 md:border-r border-border-main p-8 md:p-14 flex items-center justify-center bg-bg-main">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -57,9 +57,9 @@ export default function About() {
                 style={{ transformStyle: 'preserve-3d', perspective: 1000 }}
                 className="w-full h-full border border-border-main bg-bg-card p-3 shadow-md rounded-2xl overflow-hidden cursor-pointer"
               >
-                <img 
-                  src={adityaPhoto} 
-                  alt="Aditya Sarse" 
+                <img
+                  src={adityaPhoto}
+                  alt="Aditya Sarse"
                   className="w-full h-full object-cover object-center rounded-xl shadow-inner transition-transform duration-200"
                   style={{ transform: 'translateZ(20px)' }}
                 />
@@ -99,14 +99,14 @@ export default function About() {
 
             {/* Buttons Row */}
             <div className="flex flex-wrap gap-4 mt-2">
-              <a 
+              <a
                 href="/resume.pdf"
                 download
                 className="bg-text-heading text-bg-card px-6 py-3.5 rounded-none font-bold text-[10px] tracking-widest uppercase hover:bg-text-heading/90 active:scale-95 transition-all inline-block text-center cursor-pointer"
               >
                 Download Resume
               </a>
-              <button 
+              <button
                 onClick={scrollToContact}
                 className="border border-border-main text-text-heading bg-bg-card hover:bg-bg-main px-6 py-3.5 rounded-none font-bold text-[10px] tracking-widest uppercase active:scale-95 transition-all cursor-pointer"
               >
@@ -116,9 +116,9 @@ export default function About() {
 
             {/* Social Icons Row */}
             <div className="flex items-center gap-5 mt-2 pl-1">
-              <a 
-                href="https://github.com/AdityaSarse" 
-                target="_blank" 
+              <a
+                href="https://github.com/AdityaSarse"
+                target="_blank"
                 rel="noreferrer"
                 className="text-text-main hover:text-text-heading transition-colors"
                 title="GitHub"
@@ -130,9 +130,9 @@ export default function About() {
                   </svg>
                 </motion.div>
               </a>
-              <a 
-                href="https://linkedin.com" 
-                target="_blank" 
+              <a
+                href="https://www.linkedin.com/in/aditya-sarse-60222a312/"
+                target="_blank"
                 rel="noreferrer"
                 className="text-text-main hover:text-text-heading transition-colors"
                 title="LinkedIn"
@@ -145,8 +145,8 @@ export default function About() {
                   </svg>
                 </motion.div>
               </a>
-              <a 
-                href="mailto:aditya@example.com" 
+              <a
+                href="mailto:adityasarse362@gmail.com"
                 className="text-text-main hover:text-text-heading transition-colors"
                 title="Email"
               >
@@ -157,8 +157,8 @@ export default function About() {
                   </svg>
                 </motion.div>
               </a>
-              <a 
-                href="/resume.pdf" 
+              <a
+                href="/resume.pdf"
                 target="_blank"
                 className="text-text-main hover:text-text-heading transition-colors"
                 title="Resume"
