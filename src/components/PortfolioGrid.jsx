@@ -91,12 +91,11 @@ function ProjectCard({ project, index, total }) {
       }}
       className="w-full grid grid-cols-1 md:grid-cols-2 border border-border-main rounded-3xl overflow-hidden group bg-bg-card shadow-sm hover:shadow-md transition-shadow duration-300 mb-8 md:mb-12 relative"
     >
-      {/* Left Column: Image Container */}
       <div className="relative overflow-hidden aspect-video md:aspect-auto md:h-[400px] border-b md:border-b-0 md:border-r border-border-main">
         <img
           src={project.image}
           alt={project.title}
-          className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"
+          className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700 ease-out"
         />
         {/* Dark glassmorphic hover overlay */}
         <div className="absolute inset-0 bg-black/35 backdrop-blur-[1px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
@@ -167,7 +166,7 @@ function ProjectCard({ project, index, total }) {
 
 export default function PortfolioGrid() {
   return (
-    <div className="w-full flex flex-col bg-bg-card px-4 md:px-8 py-16 md:py-24 border-b border-border-main">
+    <div className="w-full flex flex-col bg-bg-card px-4 md:px-8 pt-4 md:pt-6 pb-16 md:pb-24 border-b border-border-main">
       <div className="w-full max-w-[1000px] mx-auto flex flex-col">
         {projects.map((project, index) => (
           <ProjectCard
