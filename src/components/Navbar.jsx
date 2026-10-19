@@ -1,17 +1,34 @@
 import React from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 export default function Navbar() {
+  const navigate = useNavigate()
+  const location = useLocation()
+  const isHome = location.pathname === '/'
+
   const scrollToSection = (id) => {
-    const element = document.getElementById(id)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+    if (isHome) {
+      const element = document.getElementById(id)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+      }
+    } else {
+      navigate('/', { state: { scrollTo: id } })
+    }
+  }
+
+  const goHome = () => {
+    if (isHome) {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    } else {
+      navigate('/')
     }
   }
 
   return (
     <nav className="w-full flex items-center justify-between px-6 py-5 border-b border-border-main bg-bg-card/85 backdrop-blur-md sticky top-0 z-50">
       {/* Logo */}
-      <div className="flex items-center gap-2.5 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+      <div className="flex items-center gap-2.5 cursor-pointer" onClick={goHome}>
         <svg className="w-5.5 h-5.5 text-text-heading" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
           <path d="M12 2v20M2 12h20M12 2l-3 3M12 2l3 3M12 22l-3-3M12 22l3 3M2 12l3-3M2 12l3 3M22 12l-3-3M22 12l3 3" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
@@ -21,7 +38,7 @@ export default function Navbar() {
       {/* Nav Links */}
       <div className="hidden md:flex items-center gap-10">
         <button 
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} 
+          onClick={goHome} 
           className="text-sm font-semibold text-text-main hover:text-text-heading transition-colors cursor-pointer"
         >
           Home

@@ -1,59 +1,8 @@
 import React, { useRef, useState, useEffect } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Eye, ArrowUpRight } from 'lucide-react'
-
-// Import project images
-import p1 from '../assets/Photos/p1.png'
-import p2 from '../assets/Photos/p2.png'
-import p3 from '../assets/Photos/p3.png'
-import p4 from '../assets/Photos/p4.png'
-
-const projects = [
-  {
-    id: 1,
-    title: 'NOIRE',
-    category: 'Modern Fashion E-Commerce',
-    year: '2025',
-    description: 'A premium fashion e-commerce experience focused on elegant design, responsive layouts, seamless product browsing, and a refined shopping experience.',
-    techStack: 'Next.js • React • Tailwind CSS • TypeScript',
-    liveUrl: 'https://noire-psi.vercel.app',
-    sourceUrl: 'https://github.com/AdityaSarse/Noire',
-    image: p1
-  },
-  {
-    id: 2,
-    title: 'Spotify Clone',
-    category: 'Full Stack Music Streaming Platform',
-    year: '2026',
-    description: 'A Spotify-inspired music streaming platform featuring secure authentication, playlist management, and a responsive user interface.',
-    techStack: 'React • Node.js • Express.js • MongoDB',
-    liveUrl: 'https://noire-spotifyclone-nine-nu.vercel.app',
-    sourceUrl: 'https://github.com/AdityaSarse/BackendLearning/tree/main/Spotify',
-    image: p2
-  },
-  {
-    id: 3,
-    title: 'VeriMed AI',
-    category: 'AI Research Assistant',
-    year: '2026',
-    description: 'An AI-powered medical research assistant that retrieves, ranks, and summarizes medical research papers using BM25, FastAPI, PostgreSQL, and AI models.',
-    techStack: 'Python • FastAPI • PostgreSQL • BM25 • AI APIs',
-    liveUrl: null,
-    sourceUrl: 'https://github.com/AdityaSarse/Vermid_Reaserch_Agent',
-    image: p3
-  },
-  {
-    id: 4,
-    title: 'Banking Transaction System',
-    category: 'Secure Full Stack Banking Application',
-    year: '2026',
-    description: 'A secure banking application with authentication, account management, transaction history, REST APIs, and scalable backend architecture.',
-    techStack: 'Node.js • Express.js • MongoDB • JWT Authentication',
-    liveUrl: null,
-    sourceUrl: 'https://github.com/AdityaSarse/BankTransaction',
-    image: p4
-  }
-]
+import { Link } from 'react-router-dom'
+import { projects } from '../data/projects'
 
 function ProjectCard({ project, index, total }) {
   const cardRef = useRef(null)
@@ -91,7 +40,10 @@ function ProjectCard({ project, index, total }) {
       }}
       className="w-full grid grid-cols-1 md:grid-cols-2 border border-border-main rounded-3xl overflow-hidden group bg-bg-card shadow-sm hover:shadow-md transition-shadow duration-300 mb-8 md:mb-12 relative"
     >
-      <div className="relative overflow-hidden aspect-video md:aspect-auto md:h-[400px] border-b md:border-b-0 md:border-r border-border-main">
+      <Link
+        to={`/project/${project.slug}`}
+        className="relative overflow-hidden aspect-video md:aspect-auto md:h-[400px] border-b md:border-b-0 md:border-r border-border-main cursor-pointer"
+      >
         <img
           src={project.image}
           alt={project.title}
@@ -103,7 +55,7 @@ function ProjectCard({ project, index, total }) {
             <Eye className="w-5 h-5" />
           </div>
         </div>
-      </div>
+      </Link>
 
       {/* Right Column: Case Details */}
       <div className="p-8 md:p-14 flex flex-col justify-between items-start text-left relative min-h-[300px]">
@@ -131,7 +83,14 @@ function ProjectCard({ project, index, total }) {
 
         {/* Bottom Actions & Tech Stack */}
         <div className="w-full flex flex-wrap justify-between items-center border-t border-border-main pt-6 mt-8 gap-4">
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center gap-4 md:gap-6">
+            <Link
+              to={`/project/${project.slug}`}
+              className="flex items-center gap-1.5 font-bold text-[10px] tracking-widest uppercase text-text-heading hover:text-text-main transition-colors cursor-pointer"
+            >
+              View Details
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </Link>
             {project.liveUrl && (
               <a
                 href={project.liveUrl}
@@ -139,7 +98,18 @@ function ProjectCard({ project, index, total }) {
                 rel="noreferrer"
                 className="flex items-center gap-1.5 font-bold text-[10px] tracking-widest uppercase text-text-heading hover:text-text-main transition-colors cursor-pointer"
               >
-                View Live
+                Live Demo
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </a>
+            )}
+            {project.backendUrl && (
+              <a
+                href={project.backendUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-1.5 font-bold text-[10px] tracking-widest uppercase text-text-heading hover:text-text-main transition-colors cursor-pointer"
+              >
+                Backend API
                 <ArrowUpRight className="w-3.5 h-3.5" />
               </a>
             )}
@@ -150,14 +120,21 @@ function ProjectCard({ project, index, total }) {
                 rel="noreferrer"
                 className="flex items-center gap-1.5 font-bold text-[10px] tracking-widest uppercase text-text-heading hover:text-text-main transition-colors cursor-pointer"
               >
-                Source Code
+                GitHub
                 <ArrowUpRight className="w-3.5 h-3.5" />
               </a>
             )}
           </div>
-          <span className="text-[9px] font-bold text-text-main/40 uppercase tracking-widest">
-            {project.techStack}
-          </span>
+          <div className="flex flex-wrap gap-1.5">
+            {project.techStack.map((tech) => (
+              <span
+                key={tech}
+                className="inline-flex items-center px-2.5 py-1 bg-bg-main border border-border-main rounded-full text-[10px] font-semibold text-text-heading tracking-wide"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </motion.div>
@@ -165,17 +142,30 @@ function ProjectCard({ project, index, total }) {
 }
 
 export default function PortfolioGrid() {
+  const topProjects = projects.slice(0, 3)
+
   return (
     <div className="w-full flex flex-col bg-bg-card px-4 md:px-8 pt-4 md:pt-6 pb-16 md:pb-24 border-b border-border-main">
       <div className="w-full max-w-[1000px] mx-auto flex flex-col">
-        {projects.map((project, index) => (
+        {topProjects.map((project, index) => (
           <ProjectCard
             key={project.id}
             project={project}
             index={index}
-            total={projects.length}
+            total={topProjects.length}
           />
         ))}
+
+        {/* See All Projects Button */}
+        <div className="w-full flex justify-center mt-4 md:mt-8">
+          <Link
+            to="/projects"
+            className="inline-flex items-center gap-2 border border-border-main text-text-heading bg-bg-card hover:bg-bg-main px-8 py-4 rounded-none font-bold text-[10px] tracking-widest uppercase active:scale-[0.98] transition-all cursor-pointer shadow-sm"
+          >
+            See All Projects ({projects.length})
+            <ArrowUpRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
       </div>
     </div>
   )
